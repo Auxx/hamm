@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
+import * as url from 'url';
+import * as path from 'path';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { cmdCreate } from './commands/create.mjs';
-import * as url from 'url';
-import * as path from 'path';
 import { cmdBuild } from './commands/build.mjs';
 
 const scriptPath = path.dirname(url.fileURLToPath(import.meta.url));
