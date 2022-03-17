@@ -36,9 +36,5 @@ lovelace:
       filename: dashboards/lovelace-sample.yaml
 
 # Virtual devices are very useful for testing purposes.
-# To enable virtual devices:
-#   1. Install HACS (https://hacs.xyz/).
-#   2. Install Virtual Components through HACS (https://github.com/twrecked/hass-virtual).
-#   3. Uncomment the line below.
-#   4. RTFM!
-#virtual:
+# Check the docs for more info https://github.com/twrecked/hass-virtual.
+virtual:
