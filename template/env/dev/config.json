@@ -1,1 +1,6 @@
-{}
+{
+  "vars": {
+    "SUN_CARD_NAME": "Next dawn",
+    "SUN_CARD_ATTRIBUTE": "next_dawn"
+  }
+}

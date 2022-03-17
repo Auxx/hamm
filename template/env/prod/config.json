@@ -1,1 +1,9 @@
-{}
+{
+  "vars": {
+    "SUN_CARD_NAME": "Next dusk",
+    "SUN_CARD_ATTRIBUTE": "next_dusk"
+  },
+  "remove": [
+    "packages/mock"
+  ]
+}

@@ -2,10 +2,18 @@ title: Sample Dashboard
 views:
   - title: Home
     icon: mdi:home-outline
-    badges: []
+    badges: [ ]
     cards:
       - type: entity
         entity: sun.sun
+
+      - type: entity
+        entity: sun.sun
+        # Attribute and name for this card will come from environment configuration.
+        # Check env/dev/config.json and env/prod/config.json for the values.
+        attribute: ~~SUN_CARD_ATTRIBUTE~~
+        name: ~~SUN_CARD_NAME~~
+
       - type: weather-forecast
         entity: weather.home
         show_current: true
