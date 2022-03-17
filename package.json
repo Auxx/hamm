@@ -1,0 +1,17 @@
+{
+  "name": "hamm",
+  "version": "0.0.1",
+  "description": "Configuration manager for Home Assistant",
+  "author": "Aleksandr 'Aux' Ivanov",
+  "license": "MIT",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "hamm": "hamm.mjs"
+  },
+  "dependencies": {
+    "yargs": "^17.3.1"
+  }
+}
