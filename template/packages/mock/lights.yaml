@@ -1,0 +1,21 @@
+light:
+  - platform: virtual
+    name: 'Bedroom light'
+    initial_value: 'on'
+    initial_brightness: 85
+    support_color: false
+    support_color_temp: true
+    initial_color_temp: 255
+    support_white_value: true
+    initial_white_value: 240
+
+  - platform: virtual
+    name: 'Living room light'
+    initial_value: 'on'
+    initial_brightness: 100
+    support_color: true
+    initial_color: [ 0, 100 ]
+    support_color_temp: true
+    initial_color_temp: 255
+    support_white_value: true
+    initial_white_value: 240
