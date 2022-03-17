@@ -1,0 +1,12 @@
+title: Sample Dashboard
+views:
+  - title: Home
+    icon: mdi:home-outline
+    badges: []
+    cards:
+      - type: entity
+        entity: sun.sun
+      - type: weather-forecast
+        entity: weather.home
+        show_current: true
+        show_forecast: true
