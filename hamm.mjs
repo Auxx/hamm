@@ -6,6 +6,7 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { cmdCreate } from './commands/create.mjs';
 import { cmdBuild } from './commands/build.mjs';
+import { cmdClean } from './commands/clean.mjs';
 
 const scriptPath = path.dirname(url.fileURLToPath(import.meta.url));
 
@@ -24,6 +25,14 @@ yargs(hideBin(process.argv))
       .choices('environment', [ 'dev', 'prod' ])
       .demandOption('environment'),
     argv => cmdBuild(argv.environment))
+
+  .command(
+    'clean [environment]',
+    'Clean build directory.',
+    y => y
+      .positional('environment', { describe: 'Target environment ("dev" or "prod", not specified for all)' })
+      .choices('environment', [ 'dev', 'prod' ]),
+    argv => cmdClean(argv.environment))
 
   .demandCommand()
   .parse();
