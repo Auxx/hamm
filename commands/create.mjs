@@ -30,6 +30,9 @@ export async function cmdCreate(folder, scriptPath) {
 
   logInfo('\nDONE!\n');
 
+  logInfo('Change to project directory:');
+  logInfo(`    ${ Colors.white }$ cd ${ folder }${ Colors.reset }\n`);
+
   logInfo('You can now build the project in development mode:');
   logInfo(`    ${ Colors.white }$ npx hamm build dev${ Colors.reset }\n`);
 
