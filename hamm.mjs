@@ -7,6 +7,7 @@ import { hideBin } from 'yargs/helpers';
 import { cmdCreate } from './commands/create.mjs';
 import { cmdBuild } from './commands/build.mjs';
 import { cmdClean } from './commands/clean.mjs';
+import { cmdDebug } from './commands/debug.mjs';
 
 const scriptPath = path.dirname(url.fileURLToPath(import.meta.url));
 
@@ -33,6 +34,14 @@ yargs(hideBin(process.argv))
       .positional('environment', { describe: 'Target environment ("dev" or "prod", not specified for all)' })
       .choices('environment', [ 'dev', 'prod' ]),
     argv => cmdClean(argv.environment))
+
+  .command(
+    'debug [environment]',
+    'Prints out current project settings and stuff',
+    y => y
+      .positional('environment', { describe: 'Target environment ("dev" or "prod", not specified for all)' })
+      .choices('environment', [ 'dev', 'prod' ]),
+    argv => cmdDebug(argv.environment))
 
   .demandCommand()
   .parse();
