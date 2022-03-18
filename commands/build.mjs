@@ -72,14 +72,21 @@ export async function cmdBuild(env) {
   }
 
   const targetDir = path.join(getTargetDir(project), env);
+  const overlayDir = `overlays/${ env }`;
   const config = await loadEnvironment(env);
 
   logInfo('\nBuild process starting...');
+
+  // console.log('targetDir', targetDir);
+  // console.log('overlayDir', overlayDir);
+  // console.log('config', config);
 
   await fs.mkdir(targetDir, { recursive: true });
   await fs.copyFile('configuration.yaml', path.join(targetDir, 'configuration.yaml'));
   await fs.cp('dashboards', path.join(targetDir, 'dashboards'), { recursive: true });
   await fs.cp('packages', path.join(targetDir, 'packages'), { recursive: true });
   await fs.cp('custom_components', path.join(targetDir, 'custom_components'), { recursive: true });
-  // await fs.cp(overlay, targetDir, { recursive: true });
+  await fs.cp(overlayDir, targetDir, { recursive: true });
+
+  logInfo('DONE!\n');
 }
