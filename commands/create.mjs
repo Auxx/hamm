@@ -1,7 +1,7 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import 'zx/globals';
-import { Colors, logError, logInfo } from '../lib/logger.mjs';
+import { Colors, logError, logInfo, printDockerCommand } from '../lib/logger.mjs';
 
 export async function cmdCreate(folder, scriptPath) {
   logInfo('\nChecking if git is installed...');
@@ -34,13 +34,8 @@ export async function cmdCreate(folder, scriptPath) {
   logInfo(`    ${ Colors.white }$ npx hamm build dev${ Colors.reset }\n`);
 
   logInfo('Once you build your configuration, you can test locally with Docker:');
-  logInfo(`    ${ Colors.white }$ docker run --name homeassistant \\`);
-  logInfo('        -p 8123:8123 \\');
-  logInfo('        -e \'TZ=Europe/London\' \\');
-  logInfo(`        -v ${ path.join(process.cwd(), folder, 'build', 'dev') }:/config \\`);
-  logInfo('        -v /etc/localtime:/etc/localtime:ro \\');
-  logInfo(`        ghcr.io/home-assistant/home-assistant:stable${ Colors.reset }\n`);
-  logInfo('Don\'t forget to replace "Europe/London" with your local time zone!\n');
+  printDockerCommand(path.join(process.cwd(), folder, 'build', 'dev'));
+  logInfo('Don\'t forget to update your local time zone if necessary!\n');
 
   logInfo('Or you can build it in production mode:');
   logInfo(`    ${ Colors.white }$ npx hamm build prod${ Colors.reset }\n`);

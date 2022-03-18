@@ -1,5 +1,6 @@
-import { Colors, logInfo, logWarn } from '../lib/logger.mjs';
+import { Colors, logInfo, logWarn, printDockerCommand } from '../lib/logger.mjs';
 import { getOverlayDir, getTargetBuildDir, loadEnvironment, loadProject } from '../lib/project.mjs';
+import path from 'path';
 
 export async function cmdDebug(env) {
   logWarn('Debug mode.\n');
@@ -28,4 +29,7 @@ export async function cmdDebug(env) {
   logInfo(`Overlay directory: ${ Colors.cyan }${ overlayDir }${ Colors.reset }`);
   logInfo(`\nEnvironment:`);
   logInfo(`${ JSON.stringify(config, null, 2) }\n`);
+
+  logInfo('Once you build your configuration, you can test locally with Docker:');
+  printDockerCommand(path.join(process.cwd(), targetDir));
 }

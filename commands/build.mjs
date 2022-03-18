@@ -21,6 +21,14 @@ export async function cmdBuild(env) {
   logInfo(`Copying files...`);
   await fs.mkdir(targetDir, { recursive: true });
   await fs.copyFile('configuration.yaml', path.join(targetDir, 'configuration.yaml'));
+
+  if (env === 'dev') {
+    await fs.copyFile('automations.yaml', path.join(targetDir, 'automations.yaml'));
+    await fs.copyFile('scenes.yaml', path.join(targetDir, 'scenes.yaml'));
+    await fs.copyFile('scripts.yaml', path.join(targetDir, 'scripts.yaml'));
+    await fs.copyFile('secrets.yaml', path.join(targetDir, 'secrets.yaml'));
+  }
+
   await fs.cp('dashboards', path.join(targetDir, 'dashboards'), { recursive: true });
   await fs.cp('packages', path.join(targetDir, 'packages'), { recursive: true });
   await fs.cp('custom_components', path.join(targetDir, 'custom_components'), { recursive: true });
