@@ -1,12 +1,10 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import 'zx/globals';
-import { Colors, logInfo } from '../lib/logger.mjs';
+import { logInfo } from '../lib/logger.mjs';
 import { getOverlayDir, getTargetBuildDir, loadEnvironment, loadProject } from '../lib/project.mjs';
 
 export async function cmdBuild(env) {
-  logInfo(`\nLoading build configuration for ${ Colors.cyan }${ env }${ Colors.reset } environment...`);
-
   const project = await loadProject();
 
   if (project === null) {
