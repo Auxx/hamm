@@ -5,6 +5,11 @@
   "author": "Aleksandr 'Aux' Ivanov",
   "license": "MIT",
   "main": "hamm.mjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Auxx/hamm.git"
+  },
+  "homepage": "https://github.com/Auxx/hamm",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
