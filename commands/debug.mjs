@@ -1,11 +1,19 @@
 import path from 'path';
 
 import { Colors, logInfo, logWarn, printDockerCommand } from '../lib/logger.mjs';
-import { getOverlayDir, getTargetBuildDir, getTemplateDir, loadEnvironment, loadProject } from '../lib/project.mjs';
+import {
+  getOverlayDir,
+  getTargetBuildDir,
+  getTemplateDir,
+  getVersion,
+  loadEnvironment,
+  loadProject
+} from '../lib/project.mjs';
 
 export async function cmdDebug(env, scriptPath) {
   logWarn('Debug mode.\n');
 
+  logInfo(`HAMM version ${ await getVersion(scriptPath) }`);
   logInfo(`Current folder: ${ Colors.cyan }${ process.cwd() }${ Colors.reset }`);
   logInfo(`Template folder: ${ Colors.cyan }${ getTemplateDir(scriptPath) }${ Colors.reset }`);
 
