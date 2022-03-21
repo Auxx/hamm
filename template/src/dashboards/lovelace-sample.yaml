@@ -18,3 +18,10 @@ views:
         entity: weather.home
         show_current: true
         show_forecast: true
+
+      - type: horizontal-stack
+        cards:
+          - type: light
+            entity: light.virtual_bedroom_light
+          - type: light
+            entity: light.virtual_living_room_light

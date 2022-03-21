@@ -1,0 +1,55 @@
+input_datetime:
+  turn_on_bedroom_lights_at:
+    name: Turn on bedroom lights at
+    has_date: false
+    has_time: true
+    initial: '20:00'
+
+  turn_off_bedroom_lights_at:
+    name: Turn off bedroom lights at
+    has_date: false
+    has_time: true
+    initial: '23:00'
+
+template:
+  - binary_sensor:
+      - name: Bedroom lights should be on
+        state: >
+          {% set now_time = now() %}
+          {% set from_time = today_at(states('input_datetime.turn_on_bedroom_lights_at')) %}
+          {% set to_time = today_at(states('input_datetime.turn_off_bedroom_lights_at')) %}
+          {{ now_time > from_time and now_time < to_time }}
+
+automation:
+  - id: 'turn_bedroom_lights_on_at_night'
+    alias: 'Turn bedroom lights on at night'
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.bedroom_lights_should_be_on
+        from: 'off'
+        to: 'on'
+        id: bedroom-lights-on
+      - platform: state
+        entity_id: binary_sensor.bedroom_lights_should_be_on
+        from: 'on'
+        to: 'off'
+        id: bedroom-lights-off
+    condition: [ ]
+    action:
+      - choose:
+          - conditions:
+              - condition: trigger
+                id: bedroom-lights-on
+            sequence:
+              - service: light.turn_on
+                target:
+                  entity_id: light.virtual_bedroom_light
+          - conditions:
+              - condition: trigger
+                id: bedroom-lights-off
+            sequence:
+              - service: light.turn_off
+                target:
+                  entity_id: light.virtual_bedroom_light
+
