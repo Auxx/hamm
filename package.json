@@ -4,7 +4,7 @@
   "description": "Configuration manager for Home Assistant",
   "author": "Aleksandr 'Aux' Ivanov",
   "license": "MIT",
-  "main": "index.mjs",
+  "main": "hamm.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

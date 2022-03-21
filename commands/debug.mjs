@@ -1,11 +1,13 @@
-import { Colors, logInfo, logWarn, printDockerCommand } from '../lib/logger.mjs';
-import { getOverlayDir, getTargetBuildDir, loadEnvironment, loadProject } from '../lib/project.mjs';
 import path from 'path';
 
-export async function cmdDebug(env) {
+import { Colors, logInfo, logWarn, printDockerCommand } from '../lib/logger.mjs';
+import { getOverlayDir, getTargetBuildDir, getTemplateDir, loadEnvironment, loadProject } from '../lib/project.mjs';
+
+export async function cmdDebug(env, scriptPath) {
   logWarn('Debug mode.\n');
 
   logInfo(`Current folder: ${ Colors.cyan }${ process.cwd() }${ Colors.reset }`);
+  logInfo(`Template folder: ${ Colors.cyan }${ getTemplateDir(scriptPath) }${ Colors.reset }`);
 
   const project = await loadProject();
 

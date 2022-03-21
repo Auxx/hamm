@@ -2,8 +2,10 @@
 
 import * as url from 'url';
 import * as path from 'path';
+
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
+
 import { cmdCreate } from './commands/create.mjs';
 import { cmdBuild } from './commands/build.mjs';
 import { cmdClean } from './commands/clean.mjs';
@@ -42,7 +44,7 @@ yargs(hideBin(process.argv))
     y => y
       .positional('environment', { describe: 'Target environment ("dev" or "prod", not specified for all)' })
       .choices('environment', [ 'dev', 'prod' ]),
-    argv => cmdDebug(argv.environment))
+    argv => cmdDebug(argv.environment, scriptPath))
 
   .command(
     'watch [environment]',

@@ -1,7 +1,10 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
+
 import 'zx/globals';
+
 import { Colors, logError, logInfo, printDockerCommand } from '../lib/logger.mjs';
+import { getTemplateDir } from '../lib/project.mjs';
 
 export async function cmdCreate(folder, scriptPath) {
   logInfo('\nChecking if git is installed...');
@@ -22,7 +25,7 @@ export async function cmdCreate(folder, scriptPath) {
   await fs.cp(path.join(vchaPath, 'custom_components'), path.join(folder, 'custom_components'), { recursive: true });
   await fs.rm(vchaPath, { recursive: true });
 
-  const templateSource = path.join(scriptPath, 'template');
+  const templateSource = getTemplateDir(scriptPath);
 
   logInfo(`\nCreating new project in \x1b[36m${ folder }\x1b[0m using template from \x1b[36m${ templateSource }\x1b[0m...`);
 
